@@ -1,0 +1,11 @@
+<div class="my-3 flex-column">
+  <div *ngFor="let stat of surveyStats; let i = index" class="d-flex">
+    <div class="mb-4" *ngIf="stat.type !== 'text'">
+      <h5>{{ stat.question }}</h5>
+    </div>
+    <div *ngIf="stat.type !== 'text'">
+      <canvas [id]="'chart-' + i" height="200"></canvas>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="container py-5" style="background: #fafafa;">
+  <div class="text-center mb-5">
+    <h1 [@fadeIn]="true" class="display-4 text-gradient-insta">Welcome to SurveyNest</h1>
+    <p [@fadeInDelay]="true" class="lead text-muted-insta">Create and participate in surveys effortlessly.</p>
+    <a routerLink="/create-survey" class="btn btn-insta-gradient btn-lg mt-3 shadow-sm">Get Started</a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" [@slideInLeft]="true">
+      <div class="card h-100 border-0 shadow-sm bg-white rounded-4">
+        <img src="/assets/images/create-survey-social.jpg" class="images-card">
+        <div class="card-body">
+          <h5 class="card-title text-primary">Create Surveys</h5>
+          <p class="card-text text-dark">Design custom surveys with various question types to gather valuable insights.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4" [@slideInUp]="true">
+      <div class="card h-100 border-0 shadow-sm bg-white rounded-4">
+        <img src="/assets/images/participate.jpeg" class="images-card">
+        <div class="card-body">
+          <h5 class="card-title text-primary">Participate</h5>
+          <p class="card-text text-dark">Engage with surveys and share your opinions on topics that matter to you.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4" [@slideInRight]="true">
+      <div class="card h-100 border-0 shadow-sm bg-white rounded-4">
+        <img src="/assets/images/analyze-results.jpg" class="images-card">
+
+        <div class="card-body">
+          <h5 class="card-title text-primary">Analyze Results</h5>
+          <p class="card-text text-dark">View and interpret survey results with intuitive charts and data summaries.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-create-survey [@slideInLeft]="true" />
+<app-analyze-result [@slideInRight]="true" />

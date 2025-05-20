@@ -1,0 +1,62 @@
+<div class="container my-4" *ngIf="isAllowed">
+  <h2>{{ surveyTitle }}</h2>
+
+  <form (ngSubmit)="submitSurvey()" #surveyForm="ngForm">
+    <div *ngFor="let question of questions; let i = index" class="card mb-4 shadow-sm">
+      <div class="card-header fw-bold">
+        {{ question.text }}
+      </div>
+
+      <div class="card-body">
+
+        <!-- SINGLE CHOICE -->
+        <div *ngIf="question.type === 'single'">
+          <div class="form-check" *ngFor="let option of question.options">
+            <input class="form-check-input" type="radio" [name]="'question-' + question._id" [value]="option._id"
+              [(ngModel)]="answers[i]" required [id]="'single-' + question._id + '-' + option._id" />
+            <label class="form-check-label" [for]="'single-' + question._id + '-' + option._id">
+              {{ option.text }}
+            </label>
+          </div>
+        </div>
+
+        <!-- MULTIPLE CHOICE -->
+        <div *ngIf="question.type === 'multiple'">
+          <div class="form-check" *ngFor="let option of question.options; let j = index">
+            <input class="form-check-input" type="checkbox" [id]="'check-' + i + '-' + j" [checked]="isChecked(i, j)"
+              (change)="onCheckboxChange(i, j, $event)" />
+            <label class="form-check-label" [for]="'check-' + question._id + '-' + option._id">
+              {{ option.text }}
+            </label>
+          </div>
+        </div>
+
+        <!-- TEXT INPUT -->
+        <div *ngIf="question.type === 'text'">
+          <textarea class="form-control" rows="3" [(ngModel)]="answers[i]" [name]="'text-' + question._id" required
+            [id]="'textarea-' + question._id"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!surveyForm.form.valid">
+      Submit Survey
+    </button>
+  </form>
+
+</div>
+<div *ngIf="!isAllowed">
+  <div class="container my-4 text-center">
+    <h2> You have answered this survey check your profile</h2>
+    <button class="btn btn-primary text-light" [routerLink]="['/profile']">
+      View profile
+    </button>
+  </div>
+</div>
+<div class="container my-4"><button type="button" class="btn btn-insta-purple" (click)="viewStats()">
+    View Stats
+  </button>
+
+  <app-stats-bar *ngIf="view==true" [surveyStats]="surveyStats"></app-stats-bar>
+</div>

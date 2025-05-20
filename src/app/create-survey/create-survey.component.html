@@ -1,0 +1,70 @@
+<div class="container mt-4">
+  <h2>Create Survey</h2>
+  <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input class="form-control" formControlName="title" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" formControlName="description"></textarea>
+    </div>
+    <div class="mb-3 col-4">
+      <label for="categorySelect" class="form-label">Select Category</label>
+      <select id="categorySelect" class="form-select" formControlName="category">
+        <option value="">-- Select Category --</option>
+        <option *ngFor="let category of categories" [value]="category._id">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+
+    <div formArrayName="questions">
+      <div class="card mb-3" *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
+        <div class="card-body">
+          <h5 class="card-title">Question {{ i + 1 }}</h5>
+
+          <div class="mb-2">
+            <label>Question Text</label>
+            <input class="form-control" formControlName="text" />
+          </div>
+
+          <div class="mb-2">
+            <label>Type</label>
+            <select class="form-select" formControlName="type">
+              <option value="single">Single Choice</option>
+              <option value="multiple">Multiple Choice</option>
+              <option value="text">Text</option>
+            </select>
+          </div>
+
+          <div formArrayName="options" *ngIf="question.get('type')?.value !== 'text'">
+            <div class="input-group mb-2" *ngFor="let option of getOptions(i).controls; let j = index"
+              [formGroupName]="j">
+              <input class="form-control" formControlName="text" placeholder="Option text" />
+              <button class="btn btn-danger" type="button"
+                (click)="removeOption(i, j)"><mat-icon>trash</mat-icon></button>
+            </div>
+            <button class="btn btn-secondary btn-sm" type="button" (click)="addOption(i)">
+              Add Option
+            </button>
+          </div>
+
+          <button class="btn btn-danger mt-2" type="button" (click)="removeQuestion(i)">
+            Remove Question
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="justify-content-end d-flex">
+      <button class="btn btn-insta-gradient btn-sm text-end" type="button" (click)="addQuestion()">
+        Add Question
+      </button>
+
+      <button class="btn btn-insta-purple btn-sm" type="submit" [disabled]="surveyForm.invalid">Submit
+        Survey</button>
+    </div>
+  </form>
+</div>

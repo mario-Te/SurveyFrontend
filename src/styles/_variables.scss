@@ -1,0 +1,127 @@
+// Instagram Gradient Colors
+$insta-gradient-colors: (
+  #405de6,
+  #5851db,
+  #833ab4,
+  #c13584,
+  #e1306c,
+  #fd1d1d,
+  #f56040,
+  #f77737,
+  #fcaf45,
+  #ffdc80
+);
+
+$insta-gradient: linear-gradient(135deg,
+  #405de6,
+  #5851db,
+  #833ab4,
+  #c13584,
+  #e1306c,
+  #fd1d1d,
+  #f56040,
+  #f77737,
+  #fcaf45,
+  #ffdc80
+);
+
+// Core Theme Colors
+$primary: #e1306c;     // Pink (official)
+$secondary: #fafafa;   // Instagram's light background
+$light: #f8f9fa;
+$dark: #262626;
+$success: #4cd964;
+$info: #5ac8fa;
+$warning: #fcaf45;
+$danger: #fd1d1d;
+$purple:#5851db;
+// Typography
+$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-size-base: 0.9375rem;
+$font-weight-base: 400;
+$headings-font-weight: 600;
+$font-size-xxs: 0.625rem; // 10px
+$font-size-xs:  0.75rem;  // 12px
+$font-size-sm:  0.875rem; // 14px
+$font-size-base: 0.9375rem; // 15px
+$font-size-md:  1rem;     // 16px
+$font-size-lg:  1.25rem;  // 20px
+$font-size-xl:  1.5rem;   // 24px
+$font-size-xxl: 2rem;     // 32px
+
+$font-weight-thin: 100;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-black: 900;
+// Border & Inputs
+$input-border-color: #dbdbdb;
+$input-bg: #fafafa;
+$input-border-radius: 8px;
+
+// Buttons
+$btn-border-radius: 999px;
+$btn-padding-y: 0.5rem;
+$btn-padding-x: 1rem;
+$link-color: $primary;
+$link-hover-color: darken($primary, 10%);
+
+// Cards
+$card-border-color: #dbdbdb;
+$card-border-radius: 12px;
+
+// Custom Classes (Optional)
+.btn-insta-gradient {
+  background: $primary !important;
+  color: $secondary !important;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+.btn-insta-purple{
+  background: $dark !important;
+  color: $secondary !important;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+.story-border {
+  background: $insta-gradient;
+  padding: 3px;
+  border-radius: 50%;
+}
+
+.text-muted-insta {
+  color: #8e8e8e;
+}
+.font-xxs { font-size: $font-size-xxs; }
+.font-xs  { font-size: $font-size-xs; }
+.font-sm  { font-size: $font-size-sm; }
+.font-md  { font-size: $font-size-md; }
+.font-lg  { font-size: $font-size-lg; }
+.font-xl  { font-size: $font-size-xl; }
+.font-xxl { font-size: $font-size-xxl; }
+
+.font-thin      { font-weight: $font-weight-thin; }
+.font-light     { font-weight: $font-weight-light; }
+.font-regular   { font-weight: $font-weight-regular; }
+.font-medium    { font-weight: $font-weight-medium; }
+.font-semibold  { font-weight: $font-weight-semibold; }
+.font-bold      { font-weight: $font-weight-bold; }
+.font-black     { font-weight: $font-weight-black; }
+

@@ -1,0 +1,45 @@
+<h4 class="text-center display-4 text-gradient-insta my-3"> Your previous submitted surveys</h4>
+
+<div class="container my-4  d-flex gap-2">
+  <div class="col-md-6 col-lg-4" *ngFor="let survey of surveyAnswers">
+    <div class="card h-100 shadow-sm cursor-pointer">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ survey.surveyId.title }}</h5>
+        <p class="card-text flex-grow-1">{{ survey.surveyId.description }}</p>
+        <small class="submitted-date">Submitted on: {{ survey.submittedAt | date:'medium' }}</small>
+
+        <div class="d-flex justify-content-between mt-3">
+          <button class="btn btn-insta-gradient btn-sm" (click)="setSelected(survey)">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-container *ngIf="selectedSurvey" class="m-3">
+  <div *ngFor=" let answer of selectedSurvey.answers" class="question-answer mt-4 container ">
+    <h2 class="text-center">{{selectedSurvey.surveyId.title}}</h2>
+    <h5 class="question-text">{{ answer.questionId.text }}</h5>
+
+    <!-- Single Choice -->
+    <ul *ngIf="answer.type === 'single'" class="options-list">
+      <li *ngFor="let option of answer.questionId.options" [class.selected]="option._id === answer.answer"
+        class="option-item">
+        {{ option.text }}
+      </li>
+    </ul>
+
+    <!-- Multiple Choice -->
+    <ul *ngIf="answer.type === 'multiple'" class="options-list">
+      <li *ngFor="let option of answer.questionId.options" [class.selected]="answer.answer.includes(option._id)"
+        class="option-item">
+        {{ option.text }}
+      </li>
+    </ul>
+
+    <!-- Text Answer -->
+    <p *ngIf="answer.type === 'text'" class="text-answer">
+      {{ answer.answer }}
+    </p>
+  </div>
+
+</ng-container>

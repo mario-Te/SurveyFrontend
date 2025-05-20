@@ -1,0 +1,86 @@
+@import 'variables';
+.survey-block {
+  background: $secondary;  // Instagram light background
+  border: 1px solid $card-border-color;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  border-radius: $card-border-radius;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.survey-title {
+  font-weight: $font-weight-semibold;
+  color: $dark;
+  font-size: $font-size-xl;
+  margin-bottom: 0.25rem;
+  font-family: $font-family-base;
+}
+
+.survey-desc {
+  font-style: italic;
+  color: $input-border-color;
+  margin-bottom: 0.75rem;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+}
+
+.submitted-date {
+  font-size: $font-size-xs;
+  color: $input-border-color;
+  font-family: $font-family-base;
+}
+
+.question-answer {
+  border-top: 1px solid $input-border-color;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.question-text {
+  color: $dark;
+  font-weight: $font-weight-semibold;
+  margin-bottom: 0.5rem;
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+}
+
+.options-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.gap-2{
+  gap: 5px;
+}
+.option-item {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-radius: 8px; // use input border radius for smoothness
+  cursor: default;
+  background-color: $input-bg;
+  color: $dark;
+  border: 1px solid transparent;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  transition: all 0.2s ease;
+
+  &.selected {
+    background: $insta-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: $dark;
+    font-weight: $font-weight-bold;
+    border: 1px solid $primary;
+  }
+}
+
+.text-answer {
+  font-style: normal;
+  background: $light;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid $input-border-color;
+  color: $dark;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+}

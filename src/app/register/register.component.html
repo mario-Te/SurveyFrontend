@@ -1,0 +1,60 @@
+<!-- register.component.html -->
+<div class="container d-flex justify-content-center align-items-center min-vh-100" style="background: #fafafa;">
+  <div class="card p-4 shadow-sm border-0 rounded-4" style="max-width: 460px; width: 100%;">
+    <div class="text-center mb-4">
+      <h1 class="text-gradient-insta display-6 fw-bold">Create Account</h1>
+      <p class="text-muted-insta">Join SurveyNest and start exploring surveys today.</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Full Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label text-dark">Full Name</label>
+        <input type="text" id="name" class="form-control" formControlName="name" />
+        <div class="text-danger small" *ngIf="submitted && f['name']">Name is required</div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label text-dark">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email" />
+        <div class="text-danger small" *ngIf="submitted && f['email'].errors?.['required']">Email is required</div>
+        <div class="text-danger small" *ngIf="submitted && f['email'].errors?.['email']">Invalid email</div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label text-dark">Password</label>
+        <input type="password" id="password" class="form-control" formControlName="password" />
+        <div class="text-danger small" *ngIf="submitted && f['password'].errors?.['required']">Password is required
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="mb-4">
+        <label for="confirmPassword" class="form-label text-dark">Confirm Password</label>
+        <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" />
+        <div class="text-danger small" *ngIf="submitted && f['confirmPassword'].errors?.['required']">Confirmation is
+          required
+        </div>
+        <div class="text-danger small" *ngIf="submitted && registerForm.errors?.['passwordMismatch']">Passwords do not
+          match</div>
+      </div>
+
+      <!-- Submit -->
+      <div class="d-grid mb-3">
+        <button class="btn btn-insta-gradient" type="submit">Register</button>
+      </div>
+
+      <div class="text-center text-muted mb-3">OR</div>
+
+      <!-- Login Link -->
+      <div class="text-center">
+        <p class="mb-0 text-muted-insta">
+          Already have an account?
+          <a routerLink="/login" class="text-primary fw-semibold text-decoration-none">Login here</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
