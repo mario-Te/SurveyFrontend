@@ -125,3 +125,10 @@ $card-border-radius: 12px;
 .font-bold      { font-weight: $font-weight-bold; }
 .font-black     { font-weight: $font-weight-black; }
 
+//
+.icon-image{
+  font-size:  $font-size-sm;
+  width: 25px;
+  height: 25px;
+  background: transparent;
+}

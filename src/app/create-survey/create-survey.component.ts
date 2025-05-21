@@ -4,6 +4,7 @@ import { Category } from '../data/Category';
 import { SurveysService } from '../services/surveys.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-survey2',
@@ -63,11 +64,15 @@ export class addSurveyComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.surveyForm.errors)
-    console.log(this.surveyForm.value);
+
     // TODO: Send to backend via HttpClient
     this.surveyService.createSurvey(this.surveyForm.value).then((res) => {
-      console.log(res.data)
+      if (res?.success)
+        Swal.fire({
+          title: 'Your survey been created!',
+          icon: "success",
+          timer: 2000
+        }).then(() => this.router.navigate(['/surveys']))
     });
 
   }

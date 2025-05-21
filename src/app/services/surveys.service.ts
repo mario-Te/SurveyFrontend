@@ -41,7 +41,7 @@ export class SurveysService {
       params: { title }
     }).pipe(map(data => data)).toPromise()
   }
-  createSurvey(payload: any): Promise<any> {
+  createSurvey(payload: any): Promise<BaseResponse<string> | undefined> {
     return this.http.post(`${api.CREATE_SURVEY}`, payload).toPromise();
   }
 }

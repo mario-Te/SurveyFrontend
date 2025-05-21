@@ -14,11 +14,13 @@
       <label for="categorySelect" class="form-label">Select Category</label>
       <select id="categorySelect" class="form-select" formControlName="category">
         <option value="">-- Select Category --</option>
-        <option *ngFor="let category of categories" [value]="category._id">
+        <option *ngFor="let category of categories" [value]="category.name">
           {{ category.name }}
         </option>
       </select>
     </div>
+
+
 
     <div formArrayName="questions">
       <div class="card mb-3" *ngFor="let question of questions.controls; let i = index" [formGroupName]="i">
@@ -43,16 +45,19 @@
             <div class="input-group mb-2" *ngFor="let option of getOptions(i).controls; let j = index"
               [formGroupName]="j">
               <input class="form-control" formControlName="text" placeholder="Option text" />
-              <button class="btn btn-danger" type="button"
-                (click)="removeOption(i, j)"><mat-icon>trash</mat-icon></button>
+              <button class="btn btn-danger" type="button" (click)="removeOption(i, j)" data-bs-toggle="tooltip"
+                data-bs-placement="top" title="delete option">
+                <img src="/assets/icons/trash.svg" class="icon-image">
+              </button>
             </div>
             <button class="btn btn-secondary btn-sm" type="button" (click)="addOption(i)">
               Add Option
             </button>
           </div>
 
-          <button class="btn btn-danger mt-2" type="button" (click)="removeQuestion(i)">
-            Remove Question
+          <button class="btn btn-danger mt-2" type="button" (click)="removeQuestion(i)" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="delete question">
+            <img src="/assets/icons/trash.svg" class="icon-image">
           </button>
         </div>
       </div>

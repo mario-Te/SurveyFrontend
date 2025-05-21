@@ -1,4 +1,4 @@
-const env = 1;
+const env = 3;
 function getEnvUrls(environment: number) {
   switch (environment) {
     //Local
@@ -6,10 +6,10 @@ function getEnvUrls(environment: number) {
       return 'http://localhost:3000/api';
     default:
 
-      return ""
+      return "https://surveybackend-p8w2.onrender.com/api"
   }
 }
-const apiUrl = getEnvUrls(1)
+const apiUrl = getEnvUrls(env)
 
 
 export const api = {

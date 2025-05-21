@@ -20,8 +20,7 @@ import { CreateSurveyComponent } from './components/create-survey/create-survey.
 import { AnalyzeResultComponent } from './components/analyze-result/analyze-result.component';
 import { ProfileComponent } from './profile/profile.component';
 import { addSurveyComponent } from './create-survey/create-survey.component';
-
-import { MatIconModule } from '@angular/material/icon';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -46,8 +45,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
-    MatIconModule
+    NgSelectModule
   ],
   providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
